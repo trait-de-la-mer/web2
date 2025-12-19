@@ -12,6 +12,7 @@
     
 </head>
 <body>
+    <video id="video" autoplay muted playsinline></video>
     <table id="main">
         <tr>
             <td>

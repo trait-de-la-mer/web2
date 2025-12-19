@@ -41,6 +41,19 @@ canva = function canva(){
     ctx.strokeText("-R/2", centerX + sixCanv, centerY + scale / twoCanv);
     ctx.strokeText("-R", centerX + sixCanv, centerY + scale);
 }
+const dopWebCam = async function dopWebCam() {
+        document.addEventListener("DOMContentLoaded", async () => {
+        const video = document.getElementById("video");
+
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+            video.srcObject = stream;
+        } catch (err) {
+            console.error("Ошибка получения доступа к камере:", err);
+            alert("Не удалось получить доступ к веб-камере. Проверьте разрешения и подключение.");
+        }
+    });
+}
 const checkPoint = async function checkPoint(){
     const form = new FormData();
     form.append("X", state.siteX);
@@ -129,6 +142,9 @@ CELL_INDEX = {
     RESULT: 3
 },
 error = document.getElementById("error");
+
+
+dopWebCam();
 window.addEventListener('DOMContentLoaded', resetXCheckboxes());
 let alternY = 0;
 
